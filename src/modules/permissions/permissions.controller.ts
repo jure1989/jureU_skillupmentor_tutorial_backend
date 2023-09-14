@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post } from '@nestjs/common'
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post } from '@nestjs/common'
 import { Permission } from 'entities/permission.entity'
 import { CreatePermissionDto } from './dto/create-permission.dto'
 import { PermissionsService } from './permissions.service'
@@ -17,5 +17,11 @@ export class PermissionsController {
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() createPermissionDto: CreatePermissionDto): Promise<Permission> {
     return this.permissionsService.create(createPermissionDto)
+  }
+
+  @Delete(':id')
+  @HttpCode(HttpStatus.OK)
+  async remove(@Param('id') id: string): Promise<Permission> {
+    return this.permissionsService.remove(id)
   }
 }

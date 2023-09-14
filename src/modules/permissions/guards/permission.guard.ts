@@ -31,9 +31,9 @@ export class PermissionsGuard implements CanActivate {
 
     // (for the read operations) || p - permission || - If user has 'view_blogpost' or 'view_edit' permissions. And if they do, the request is allowed to proceed and the blog post is displayed to the user:
     if (request.method === 'GET') {
-      return role.permissions.some((p) => p.name === `view${access}` || p.name === `edit${access}`)
+      return role.permissions.some((p) => p.name === `view_${access}` || p.name === `edit_${access}`)
     }
     // (for write operations) -  If method is not GET, it checks if the roles permissions include 'edit_access.
-    return role.permissions.some((p) => p.name === `edit${access}`)
+    return role.permissions.some((p) => p.name === `edit_${access}`)
   }
 }
