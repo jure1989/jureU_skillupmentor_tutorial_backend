@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module'
 import { DatabaseModule } from './database/database.module'
 import { PermissionsGuard } from './permissions/guards/permission.guard'
 import { PermissionsModule } from './permissions/permissions.module'
+import { ProductsModule } from './products/products.module'
 import { RolesModule } from './roles/roles.module'
 import { UsersModule } from './users/users.module'
 
@@ -22,6 +23,7 @@ import { UsersModule } from './users/users.module'
     AuthModule,
     RolesModule,
     PermissionsModule,
+    ProductsModule,
   ],
   controllers: [],
   providers: [
