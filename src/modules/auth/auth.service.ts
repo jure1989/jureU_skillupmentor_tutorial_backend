@@ -5,6 +5,7 @@ import { Request, Response } from 'express'
 import Logging from 'library/logging'
 import { UsersService } from 'modules/users/users.service'
 import { compareHash, hash } from 'utils/bcrypt'
+
 import { RegisterUserDto } from './dto/register-user.dto'
 
 @Injectable()

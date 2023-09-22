@@ -4,6 +4,7 @@ import { Product } from 'entities/product.entity'
 import Logging from 'library/logging'
 import { AbstractService } from 'modules/common/abstract.service'
 import { Repository } from 'typeorm'
+
 import { CreateUpdateProductDto } from './dto/create-update-product.dto'
 
 @Injectable()

@@ -1,6 +1,6 @@
 import { Exclude, Expose } from 'class-transformer'
-import { IsNotEmpty } from 'class-validator'
 import { Column, Entity, OneToMany } from 'typeorm'
+
 import { Base } from './base.entity'
 import { OrderItem } from './order-item.entity'
 
@@ -14,11 +14,10 @@ export class Order extends Base {
   @Exclude()
   last_name: string
 
-  @IsNotEmpty()
   @Column()
   email: string
 
-  @OneToMany(() => OrderItem, (orederItem) => orederItem.order)
+  @OneToMany(() => OrderItem, (orderItem) => orderItem.order)
   order_items: OrderItem[]
 
   @Expose()

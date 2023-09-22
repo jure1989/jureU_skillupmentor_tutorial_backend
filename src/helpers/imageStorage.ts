@@ -1,7 +1,7 @@
+import fs from 'fs'
 import Logging from 'library/logging'
 import { diskStorage, Options } from 'multer'
 import { extname } from 'path'
-import fs from 'fs'
 
 const FileType = import('file-type')
 

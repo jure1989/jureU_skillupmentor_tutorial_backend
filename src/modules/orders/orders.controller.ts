@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common'
 import { Response } from 'express'
 import { PaginatedResult } from 'interfaces/paginated-result.interface'
+
 import { OrdersService } from './orders.service'
 
 @Controller('orders')
@@ -21,7 +22,7 @@ export class OrdersController {
   @Get()
   @HttpCode(HttpStatus.OK)
   async findAll(@Query('page') page: number): Promise<PaginatedResult> {
-    return this.ordersService.paginate(page, ['Order_items'])
+    return this.ordersService.paginate(page, ['order_items'])
   }
 
   @Post('export')
@@ -31,7 +32,6 @@ export class OrdersController {
   }
 
   @Get('chart')
-  @HttpCode(HttpStatus.OK)
   async chart(): Promise<{ date: string; sum: string }[]> {
     return this.ordersService.chart()
   }

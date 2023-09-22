@@ -15,6 +15,7 @@ import { Public } from 'decorators/public.decorator'
 import { User } from 'entities/user.entity'
 import { Request, Response } from 'express'
 import { RequestWithUser } from 'interfaces/auth.interface'
+
 import { AuthService } from './auth.service'
 import { RegisterUserDto } from './dto/register-user.dto'
 import { JwtAuthGuard } from './guards/jwt.guard'

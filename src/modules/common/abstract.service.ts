@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException, InternalServerErrorException } from '@nestjs/common'
+import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common'
 import { PaginatedResult } from 'interfaces/paginated-result.interface'
 import Logging from 'library/logging'
 import { Repository } from 'typeorm'
@@ -49,7 +49,7 @@ export abstract class AbstractService {
       return this.repository.remove(element)
     } catch (error) {
       Logging.error(error)
-      throw new InternalServerErrorException(`Something went wrong while deleting an element.`)
+      throw new InternalServerErrorException('Something went wrong while deleting an element.')
     }
   }
 
@@ -73,7 +73,7 @@ export abstract class AbstractService {
       }
     } catch (error) {
       Logging.error(error)
-      throw new BadRequestException(`Something went wrong while searching for a paginated elements.`)
+      throw new BadRequestException('Something went wrong while searching for a paginated elements.')
     }
   }
 }
