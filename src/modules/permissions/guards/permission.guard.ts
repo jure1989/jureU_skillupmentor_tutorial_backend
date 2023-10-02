@@ -1,7 +1,6 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
 import { Role } from 'entities/role.entity'
-import { User } from 'entities/user.entity'
 import { AuthService } from 'modules/auth/auth.service'
 import { RolesService } from 'modules/roles/roles.service'
 import { UsersService } from 'modules/users/users.service'
