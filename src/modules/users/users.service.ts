@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { User } from 'entities/user.entity'
-import { PostgresErrorCode } from 'helpers/postgres.ErrorCode.enum'
+import { PostgresErrorCode } from 'helpers/postgresErrorCode.enum'
 import Logging from 'library/logging'
 import { AbstractService } from 'modules/common/abstract.service'
 import { Repository } from 'typeorm'
@@ -18,9 +18,7 @@ export class UsersService extends AbstractService {
 
   async create(createUserDto: CreateUserDto): Promise<User> {
     const user = await this.findBy({ email: createUserDto.email })
-
     if (user) {
-      // if there is a user (if user already exists), throw error:
       throw new BadRequestException('User with that email already exists.')
     }
     try {
@@ -34,20 +32,11 @@ export class UsersService extends AbstractService {
 
   async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
     const user = (await this.findById(id)) as User
-
-    //  uses object destructuring to extract specific properties from updateUserDto and assign them to individual variables:
-
     const { email, password, confirm_password, role_id, ...data } = updateUserDto
-
     if (user.email !== email && email) {
       user.email = email
-
-      // if email that exists is the same as emailis provided, throw error:
-    } else if (email && user.email === email) {
-      throw new BadRequestException('User with that email already exists.')
     }
     if (password && confirm_password) {
-      // if password and confirm_password exists:
       if (password !== confirm_password) {
         throw new BadRequestException('Passwords do not match.')
       }
@@ -56,13 +45,12 @@ export class UsersService extends AbstractService {
       }
       user.password = await hash(password)
     }
-
     if (role_id) {
       user.role = { ...user.role, id: role_id }
     }
     try {
       Object.entries(data).map((entry) => {
-        user[entry[0]] = entry[1] // example: first_name [0] = last_name[1].
+        user[entry[0]] = entry[1]
       })
       return this.usersRepository.save(user)
     } catch (error) {
@@ -76,7 +64,6 @@ export class UsersService extends AbstractService {
 
   async updateUserImageId(id: string, avatar: string): Promise<User> {
     const user = await this.findById(id)
-
     return this.update(user.id, { avatar })
   }
 }

@@ -20,7 +20,6 @@ export class OrdersService extends AbstractService {
     const json = []
 
     const orders: Order[] = await this.findAll(['order_items'])
-    // foreEach order:
     orders.forEach((o) => {
       json.push({
         ID: o.id,
@@ -55,7 +54,6 @@ export class OrdersService extends AbstractService {
     JOIN "order_item" oi ON o.id = oi.order_id
     GROUP BY date;
     `)
-
     const chartData: { date: string; sum: string }[] = []
     for (let index = 0; index < apiData.length; index++) {
       chartData.push({

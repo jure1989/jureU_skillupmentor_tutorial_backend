@@ -13,9 +13,9 @@ export class RegisterUserDto {
   email: string
 
   @IsNotEmpty()
-  @Matches(/^(?=.*\d)[A-Za-z. \s_-]+[\w~@#$%^&*+=`|{}:;!.?"()[\]-]{6,}/, {
+  @Matches(/^(?=.*\d)[A-Za-z.\s_-]+[\w~@#$%^&*+=`|{}:;!.?"()[\]-]{6,}/, {
     message:
-      'Password need to have at least one number, lower or upper case letter and it has to be longer than 5 characters.',
+      'Password must have at least one number, lower or upper case letter and it has to be longer than 5 characters.',
   })
   password: string
 

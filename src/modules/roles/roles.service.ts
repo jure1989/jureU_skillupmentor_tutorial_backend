@@ -26,7 +26,6 @@ export class RolesService extends AbstractService {
 
   async update(roleId: string, updateRoleDto: CreateUpdateRoleDto, permissionsIds: { id: string }[]): Promise<Role> {
     const role = (await this.findById(roleId)) as Role
-
     try {
       role.name = updateRoleDto.name
       role.permissions = permissionsIds as Permission[]

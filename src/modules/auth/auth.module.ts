@@ -24,7 +24,6 @@ import { LocalStrategy } from './strategies/local.strategy'
       }),
     }),
   ],
-
   controllers: [AuthController],
   providers: [
     AuthService,

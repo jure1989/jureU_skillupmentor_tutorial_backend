@@ -18,7 +18,6 @@ import { RequestWithUser } from 'interfaces/auth.interface'
 
 import { AuthService } from './auth.service'
 import { RegisterUserDto } from './dto/register-user.dto'
-import { JwtAuthGuard } from './guards/jwt.guard'
 import { LocalAuthGuard } from './guards/local-auth.guard'
 
 @Controller('auth')
@@ -52,9 +51,7 @@ export class AuthController {
 
   @Post('signout')
   @HttpCode(HttpStatus.OK)
-  async signout(@Res({ passthrough: true }) res: Response): Promise<{ message: string }> {
+  signout(@Res({ passthrough: true }) res: Response) {
     res.clearCookie('access_token')
-
-    return { message: 'ok' }
   }
 }
